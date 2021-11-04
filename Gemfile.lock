@@ -5,6 +5,10 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    eventmachine (1.2.7)
+    faye-websocket (0.11.1)
+      eventmachine (>= 0.12.0)
+      websocket-driver (>= 0.5.1)
     ffi (1.15.4)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -26,11 +30,16 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
+    websocket-driver (0.7.5)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  eventmachine
+  faye-websocket
   http
   json
 
