@@ -167,11 +167,6 @@
 
 # end
 
-# require 'http'
-# require 'json'
-
-
-
 require 'slack-ruby-client'
 
 Slack.configure do |config|
