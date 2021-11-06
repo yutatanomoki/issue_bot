@@ -1,8 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (6.1.4.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    concurrent-ruby (1.1.9)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     eventmachine (1.2.7)
@@ -44,26 +51,36 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
+    i18n (1.8.11)
+      concurrent-ruby (~> 1.0)
     json (2.6.1)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
+    minitest (5.14.4)
     multipart-post (2.1.1)
     public_suffix (4.0.6)
     rake (13.0.6)
     ruby2_keywords (0.0.5)
+    slack-ruby-bot (0.16.1)
+      activesupport
+      hashie
+      slack-ruby-client (>= 0.14.0)
     slack-ruby-client (0.17.0)
       faraday (>= 1.0)
       faraday_middleware
       gli
       hashie
       websocket-driver
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    zeitwerk (2.5.1)
 
 PLATFORMS
   ruby
@@ -73,7 +90,7 @@ DEPENDENCIES
   faye-websocket
   http
   json
-  slack-ruby-client
+  slack-ruby-bot
 
 BUNDLED WITH
    1.17.2

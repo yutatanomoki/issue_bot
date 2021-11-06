@@ -180,3 +180,19 @@
 #   })
 # puts JSON.pretty_generate(JSON.parse(response.body))
 
+require 'slack-ruby-bot'
+SlackRubyBot::Client.logger.level = Logger::WARN
+
+class Bot
+  def call(client, data)
+    client.say(text: data.text, channel: data.channel)
+  end
+end
+
+server = SlackRubyBot::Server.new(
+  token: 'xoxb-2671280892101-2702747161297-hTJIqJ28MpTwvBeAzF34V1uL',
+  hook_handlers: {
+    message: Bot.new
+  }
+)
+server.run
