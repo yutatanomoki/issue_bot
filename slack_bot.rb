@@ -167,15 +167,29 @@
 
 # end
 
-require 'http'
-require 'json'
+# require 'http'
+# require 'json'
 
-puts(ENV['SLACK_API_TOKEN'])
+# puts(ENV['SLACK_API_TOKEN'])
 
-response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
-    token: ENV['SLACK_API_TOKEN'],
-    channel: "C02KU7X3MLJ",
-    text: "こんにちは！",
-    as_user: true,
-  })
-puts JSON.pretty_generate(JSON.parse(response.body))
+# response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
+#     token: ENV['SLACK_API_TOKEN'],
+#     channel: "C02KU7X3MLJ",
+#     text: "こんにちは！",
+#     as_user: true,
+#   })
+# puts JSON.pretty_generate(JSON.parse(response.body))
+
+require "slack-ruby-client"
+
+Slack.configure do |config|
+  config.token = ENV['SLACK_API_TOKEN']
+end
+
+client = Slack::Web::Client.new
+
+client.auth_test
+
+res = client.chat_postMessage(channel: "#general", text: "Hello World", as_user: false)
+
+pp res
