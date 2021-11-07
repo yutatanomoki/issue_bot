@@ -170,30 +170,24 @@
 # require 'http'
 # require 'json'
 
-# puts(ENV['SLACK_API_TOKEN'])
 
-# response = HTTP.post("https://slack.com/api/chat.postMessage", params: {
-#     token: ENV['SLACK_API_TOKEN'],
-#     channel: "C02KU7X3MLJ",
-#     text: "こんにちは！",
-#     as_user: true,
-#   })
-# puts JSON.pretty_generate(JSON.parse(response.body))
 
-require 'slack-ruby-bot'
-# require 'async-websocket'
-SlackRubyBot::Client.logger.level = Logger::WARN
+require 'slack-ruby-client'
 
-class Bot
-  def call(client, data)
-    client.say(text: data.text, channel: data.channel)
-  end
+Slack.configure do |config|
+  # APIトークンを設定
+  config.token = ENV['SLACK_API_TOKEN']
 end
 
-server = SlackRubyBot::Server.new(
-  token: ENV['SLACK_API_TOKEN'],
-  hook_handlers: {
-    message: Bot.new
-  }
-)
-server.run
+# APIクライアントを生成
+client = Slack::Web::Client.new
+
+# #チャンネル名 of @ユーザー名
+channel = '#general'
+
+# メッセージ
+text = 'Hello World'
+
+response = client.chat_postMessage(channel: channel, text: text)
+
+pp response
