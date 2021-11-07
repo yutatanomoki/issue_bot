@@ -181,6 +181,7 @@
 # puts JSON.pretty_generate(JSON.parse(response.body))
 
 require 'slack-ruby-bot'
+# require 'async-websocket'
 SlackRubyBot::Client.logger.level = Logger::WARN
 
 class Bot
@@ -190,7 +191,7 @@ class Bot
 end
 
 server = SlackRubyBot::Server.new(
-  token: 'xoxb-2671280892101-2702747161297-hTJIqJ28MpTwvBeAzF34V1uL',
+  token: ENV['SLACK_API_TOKEN'],
   hook_handlers: {
     message: Bot.new
   }
