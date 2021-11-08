@@ -167,32 +167,22 @@
 
 # end
 
-# require 'slack-ruby-client'
+require 'slack-ruby-client'
 
-# Slack.configure do |config|
-#   # APIトークンを設定
-#   config.token = ENV['SLACK_API_TOKEN']
-# end
+Slack.configure do |config|
+  # APIトークンを設定
+  config.token = ENV['SLACK_API_TOKEN']
+end
 
-# # APIクライアントを生成
-# client = Slack::Web::Client.new
+# APIクライアントを生成
+client = Slack::Web::Client.new
 
-# # #チャンネル名 of @ユーザー名
-# channel = '#general'
+# #チャンネル名 of @ユーザー名
+channel = '#general'
 
-# # メッセージ
-# text = 'Hello World'
+# メッセージ
+text = 'Hello World'
 
-# response = client.chat_postMessage(channel: channel, text: text)
+response = client.chat_postMessage(channel: channel, text: text)
 
-# pp response
-
-require 'slack-ruby-bot'
-
-server = SlackRubyBot::Server.new(
-  token: ENV["TOKEN"],
-  hook_handlers: {
-    message: [->(client, data) { puts "メッセージを受信しました" }]
-  }
-)
-server.run
+pp response
